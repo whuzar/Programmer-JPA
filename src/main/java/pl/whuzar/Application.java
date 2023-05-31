@@ -1,6 +1,5 @@
 package pl.whuzar;
 
-import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,9 +22,11 @@ public class Application {
             addDeveloper(programmerRepository);
 
             //search developers by experience
+            System.out.println("Developers by experience");
             programmerRepository.takeOnlyExperienceProgrammer("Intern").forEach(System.out::println);
 
             //show the most used languages
+            System.out.println("Most used languages");
             List<Object[]> resultsTableOf = languageRepository.showTableOfTopLanguages();
 
             for (Object[] result : resultsTableOf) {
@@ -38,6 +39,7 @@ public class Application {
             }
 
             //show developer when he voted
+            System.out.println("When developer voted");
             List<Object[]> results = programmerRepository.showVotedLanguage();
 
             for (Object[] result : results) {
@@ -52,6 +54,7 @@ public class Application {
             }
 
             //show developer if present
+            System.out.println("Developer by id");
             programmerRepository.showDeveloperById(1L).ifPresent(System.out::println);
 
         };
