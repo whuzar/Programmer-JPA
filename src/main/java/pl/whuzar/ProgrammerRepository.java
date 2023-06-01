@@ -1,6 +1,8 @@
 package pl.whuzar;
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -18,5 +20,15 @@ public interface ProgrammerRepository extends JpaRepository<Programmer, Long> {
 
     @Query(value = "SELECT p FROM Programmer p WHERE p.id = ?1")
     Optional<Programmer> showDeveloperById(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Votes v WHERE v.programmer.id = ?1")
+    void deleteVotesById(Long id);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Programmer p WHERE p.id = ?1")
+    void deleteProgrammerById(Long id);
 
 }

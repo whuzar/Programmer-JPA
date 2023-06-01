@@ -36,7 +36,7 @@ public class Programmer {
     @OneToMany(mappedBy = "programmer", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Book> books = new ArrayList<>();
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "programmer")
+    @OneToMany(mappedBy = "programmer", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Votes> votes = new ArrayList<>();
 
     public Programmer(String first_name, String last_name, String email, Integer age) {

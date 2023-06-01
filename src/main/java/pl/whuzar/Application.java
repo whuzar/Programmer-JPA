@@ -57,6 +57,12 @@ public class Application {
             System.out.println("Developer by id");
             programmerRepository.showDeveloperById(1L).ifPresent(System.out::println);
 
+
+            //delete developer
+            System.out.println("Delete developer by id");
+            programmerRepository.deleteVotesById(4L);
+            programmerRepository.deleteProgrammerById(4L);
+
         };
     }
 
